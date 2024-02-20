@@ -10,7 +10,7 @@ cam_id = 0  # Change this to your desired camera ID
 
 # Initialize variables
 cap = cv2.VideoCapture(cam_id)  # For Webcam
-cap.set(3, 1080)
+cap.set(3, 700)
 points = np.zeros((4, 2), int)  # Array to store clicked points
 counter = 0  # Counter to track the number of clicked points
 
@@ -36,7 +36,7 @@ def mousePoints(event, x, y, flags, params):
         print(f"Clicked points: {points}")
 
 
-def warp_image(img, points, size=[1080, 700]):
+def warp_image(img, points, size=[500,700]):
     """
     Warps an image based on the selected points.
 
@@ -61,7 +61,7 @@ while True:
 
     if counter == 4:
         # Save selected points to file
-        fileObj = open("map.p", "wb")
+        fileObj = open("../Data/map.p", "wb")
         pickle.dump(points, fileObj)
         fileObj.close()
         print("Points saved to file: map.p")
